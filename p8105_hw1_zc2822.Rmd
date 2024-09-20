@@ -1,6 +1,54 @@
 ---
 title: "p8105_hw1_zc2822"
-output: github_document
+author: Zhengyong Chen
 date: "2024-09-19"
+output: github_document
 ---
+
+```{r setup, echo = FALSE, message = FALSE}
+library(tidyverse)
+```
+
+## Load the penguins dataset.
+
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+
+## Describe the penguins dataset.
+
+```{r}
+variable_names = names(penguins)
+species_names = levels(penguins$species)
+island_names = levels(penguins$island)
+bill_length_head10 = head(penguins$bill_length_mm, 10)
+bill_depth_head10 = head(penguins$bill_depth_mm, 10)
+flipper_length_head10 = head(penguins$flipper_length_mm, 10)
+body_mass_head10 = head(penguins$body_mass_g, 10)
+
+list("variable names" = variable_names,
+     "species names" = species_names,
+     "island names" = island_names,
+     "head 10 of bill length" = bill_length_head10,
+     "head 10 of bill depth" = bill_depth_head10,
+     "head 10 of flipper length" = flipper_length_head10,
+     "head 10 of body mass" = body_mass_head10)
+```
+
+
+```{r size}
+list("number of rows" = nrow(penguins),
+     "number of columns" = ncol(penguins))
+```
+
+```{r}
+mean_flipper_length = mean(penguins$flipper_length_mm, na.rm = TRUE)
+cat("mean flipper length:", mean_flipper_length)
+```
+
+The data in the penguins dataset contains information about penguins, includes their species("Adelie", "Chinstrap", "Gentoo" ), island("Biscoe", "Dream", "Torgersen"), bill length, bill depth, flipper length, bodu mass, sex, and year. 
+
+There are 8 variables and 344 observations.
+
+The mean flipper length is 200.9152.
 
