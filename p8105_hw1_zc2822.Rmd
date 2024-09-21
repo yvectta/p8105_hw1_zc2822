@@ -9,6 +9,8 @@ output: github_document
 library(tidyverse)
 ```
 
+# Problem 1
+
 ## Load the penguins dataset.
 
 ```{r}
@@ -62,5 +64,52 @@ print(scatter_plot)
 ggsave("scatterplot_flipper_vs_bill.png", plot = scatter_plot)
 ```
 
+# Problem 2
+
+## Create the data frame.
+
+```{r}
+set.seed(1234)
+
+df = tibble(
+  random_sample = rnorm(10),
+  logical_vector = random_sample > 0,
+  character_vector = letters[1:10],
+  factor_vector = factor(rep(c("low", "medium", "high"), length.out = 10))
+)
+
+print(df)
+```
+
+Try to calculate mean:
+
+```{r}
+df |> pull(random_sample) |> mean()
+df |> pull(logical_vector) |> mean()
+df |> pull(character_vector) |> mean()
+df |> pull(factor_vector) |> mean()
+```
+
+I can only calculate the mean of random_sample and logical_vector.
+
+```{r, eval = FALSE}
+df |> pull(logical_vector) |> as.numeric()
+df |> pull(character_vector) |> as.numeric()
+df |> pull(factor_vector) |> as.numeric()
+```
+
+When applying as.numeric():
+
+1. In the logical vector, TRUE was converted to 1, FALSE was converted to 0, because logical variables can be seen as numeric variables;
+
+2. All characters in the character vector turned into NA, because the characters can not be converted into numeric ones directly;
+
+3. In the factor vector, different level was converted into different integers, because factors are stored as integers.
+
+For the logical vector, since TRUE was converted to 1, FALSE was converted to 0, so the mean can be calculated directly;
+
+Character variables can not be directly converted to numeric, so calculating their mean results in an error;
+
+Factor variables may have a mean after converted to numeric, but it does not have a meaningful explanation.
 
 
