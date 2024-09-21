@@ -52,3 +52,15 @@ There are 8 variables and 344 observations.
 
 The mean flipper length is 200.9152.
 
+```{r scatterplot, warning = FALSE}
+scatter_plot = ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+                      geom_point() +
+                      labs(x = "Bill Length (mm)", y = "Flipper Length (mm)")
+                      
+print(scatter_plot)
+
+ggsave("scatterplot_flipper_vs_bill.png", plot = scatter_plot)
+```
+
+
+
