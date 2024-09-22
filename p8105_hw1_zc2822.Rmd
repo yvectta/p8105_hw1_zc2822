@@ -116,6 +116,8 @@ When applying as.numeric():
 
 3. In the factor vector, different level was converted into different integers, because factors are stored as integers.
 
+Why?
+
 For the logical vector, since TRUE was converted to 1, FALSE was converted to 0, so the mean can be calculated directly;
 
 Character variables can not be directly converted to numeric, so calculating their mean results in an error;
